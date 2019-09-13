@@ -2,12 +2,22 @@
 <html lang="">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VM Single view</title>
 
     <head>
         <style>
+            html {
+                font-family: 'Muli', sans-serif;
+            }
+
+            h2 {
+                font-weight: bold;
+            }
+
             .indhold {
                 width: 70vw;
                 min-height: 50vh;
@@ -22,7 +32,23 @@
             }
 
             img {
-                max-width: 50%;
+                max-width: 100%;
+            }
+
+            article {
+                border: 1px solid black;
+                margin: 5px;
+                padding: 5px;
+                border-radius: 5%;
+            }
+
+            button {
+                border-radius: 10%;
+                border: solid 1px;
+            }
+
+            button:hover {
+                background-color: #e6e6e6;
             }
 
         </style>
@@ -37,11 +63,11 @@
                 <h2></h2>
                 <img src="" alt="">
                 <p class="guld"></p>
-                <p class="sejre"></p>
                 <p class="resultat"></p>
                 <p class="sølv"></p>
                 <p class="vært"></p>
                 <p class="topscorer"></p>
+                <p class="sejre"></p>
                 <p class="info"></p>
             </article>
         </section>
@@ -70,12 +96,12 @@
                     document.querySelector(".enkeltBold h2").textContent = bold.gsx$årstal.$t;
                     document.querySelector(".enkeltBold img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
                     document.querySelector(".enkeltBold img").alt = bold.gsx$billede.$t;
-                    document.querySelector(".guld").textContent = bold.gsx$guld.$t;
-                    document.querySelector(".sejre").textContent = bold.gsx$sejre.$t;
-                    document.querySelector(".resultat").textContent = bold.gsx$resultat.$t;
-                    document.querySelector(".sølv").textContent = bold.gsx$sølv.$t;
-                    document.querySelector(".vært").textContent = bold.gsx$vært.$t;
-                    document.querySelector(".topscorer").textContent = bold.gsx$topscorer.$t;
+                    document.querySelector(".guld").textContent = "Vinder: " + bold.gsx$guld.$t;
+                    document.querySelector(".resultat").textContent = "Resultat: " + bold.gsx$resultat.$t;
+                    document.querySelector(".sølv").textContent = "2. plads: " + bold.gsx$sølv.$t;
+                    document.querySelector(".vært").textContent = "Vært: " + bold.gsx$vært.$t;
+                    document.querySelector(".topscorer").textContent = "Topscorer(e): " + bold.gsx$topscorer.$t;
+                    document.querySelector(".sejre").textContent = "VM sejre: " + bold.gsx$sejre.$t;
                     document.querySelector(".info").textContent = bold.gsx$info.$t;
 
                 }

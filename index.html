@@ -2,12 +2,18 @@
 <html lang="">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VM</title>
     <style>
-        <style>h1 {
+        html {
+            font-family: 'Muli', sans-serif;
+        }
+
+        h1 {
             text-align: center;
+            font-weight: bold;
         }
 
 
@@ -17,7 +23,7 @@
         }
 
         .valgt {
-            background-color: red;
+            text-decoration: underline;
         }
 
         #liste {
@@ -31,20 +37,29 @@
             border: 1px solid black;
             margin: 5px;
             padding: 5px;
+            background-color: #efeefc;
+            border-radius: 5%;
         }
 
         article:hover {
             cursor: pointer;
+            background-color: #e6e6e6;
+        }
+
+        button {
+            font-size: 28px;
+            border-radius: 9%;
+            border: solid 1px;
+            background-color: whitesmoke;
         }
 
         button:hover {
             cursor: pointer;
-        }
-
-
-        article:nth-child(odd) {
             background-color: #e6e6e6;
         }
+
+
+
 
         img {
             max-width: 100%;
@@ -93,9 +108,13 @@
             <h2></h2>
             <img src="" alt="">
             <p class="guld"></p>
+            <p class="vært"></p>
         </article>
     </template>
 
+    <footer>
+
+    </footer>
 
     <script>
         let bold;
@@ -123,6 +142,7 @@
                     klon.querySelector("img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
                     klon.querySelector("img").alt = bold.gsx$årstal.$t;
                     klon.querySelector(".guld").textContent = "Vinder: " + bold.gsx$guld.$t;
+                    klon.querySelector(".vært").textContent = "Vært: " + bold.gsx$vært.$t;
                     dest.appendChild(klon);
 
                     dest.lastElementChild.addEventListener("click", () => {
