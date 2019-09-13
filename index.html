@@ -79,6 +79,14 @@
 <body>
     <h1>VM historie</h1>
     <section id="splash"></section>
+
+    <nav class="menu">
+        <button class="filter valgt" data-kategori="alle">Alle</button>
+        <button class="filter" data-kategori="1">1930-1962</button>
+        <button class="filter" data-kategori="2">1966-1990</button>
+        <button class="filter" data-kategori="3">1994-2018</button>
+    </nav>
+
     <section id="liste"></section>
     <template>
         <article>
@@ -91,6 +99,7 @@
 
     <script>
         let bold;
+        let filterBold = "alle";
         const dest = document.querySelector("#liste");
         const temp = document.querySelector("template");
         document.addEventListener("DOMContentLoaded", getJson);
@@ -99,18 +108,45 @@
             let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1wU2XaFDYe2QRLvGru5Q2j3FHmwMZsp23IKTEOcGe5EQ/od6/public/values?alt=json");
             bold = await jsonData.json();
             visBold();
+            addEventListenersToButtons();
+
         }
 
         function visBold() {
+            dest.innerHTML = "";
             bold.feed.entry.forEach((bold) => {
 
-                const klon = temp.cloneNode(true).content;
-                klon.querySelector("h2").textContent = bold.gsx$årstal.$t;
-                klon.querySelector("img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
-                klon.querySelector("img").alt = bold.gsx$årstal.$t;
-                klon.querySelector(".guld").textContent = "Vinder: " + bold.gsx$guld.$t;
-                dest.appendChild(klon);
+                if (filterBold == "alle" || filterBold == bold.gsx$id.$t) {
+
+                    const klon = temp.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = bold.gsx$årstal.$t;
+                    klon.querySelector("img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
+                    klon.querySelector("img").alt = bold.gsx$årstal.$t;
+                    klon.querySelector(".guld").textContent = "Vinder: " + bold.gsx$guld.$t;
+                    dest.appendChild(klon);
+
+                    dest.lastElementChild.addEventListener("click", () => {
+                        location.href = `singleview.html?årstal=${bold.gsx$årstal.$t}`;
+                    });
+
+                }
             })
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            filterBold = this.dataset.kategori;
+
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            });
+            this.classList.add("valgt");
+            visBold();
         }
     </script>
 </body>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VM Single view</title>
+
+    <head>
+        <style>
+            .indhold {
+                width: 70vw;
+                min-height: 50vh;
+                background: #fff;
+                margin: 4rem auto;
+                padding: 10px;
+            }
+
+            .luk {
+                font-size: 2rem;
+                cursor: pointer;
+            }
+
+            img {
+                max-width: 50%;
+            }
+
+        </style>
+    </head>
+</head>
+
+<body>
+    <main id="single">
+        <button class="luk">Tilbage</button>
+        <section class="indhold">
+            <article class="enkeltBold">
+                <h2></h2>
+                <img src="" alt="">
+                <p class="guld"></p>
+                <p class="sejre"></p>
+                <p class="resultat"></p>
+                <p class="sølv"></p>
+                <p class="vært"></p>
+                <p class="topscorer"></p>
+                <p class="info"></p>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let årstal = urlParams.get("årstal");
+        let bold;
+        document.addEventListener("DOMContentLoaded", getJson);
+        document.querySelector(".luk").addEventListener("click", () => {
+            history.back();
+        })
+
+
+        async function getJson() {
+            let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1wU2XaFDYe2QRLvGru5Q2j3FHmwMZsp23IKTEOcGe5EQ/od6/public/values?alt=json");
+            bold = await jsonData.json();
+            visBold();
+        }
+
+        function visBold() {
+
+            bold.feed.entry.forEach(bold => {
+                if (bold.gsx$årstal.$t == årstal) {
+                    document.querySelector(".enkeltBold h2").textContent = bold.gsx$årstal.$t;
+                    document.querySelector(".enkeltBold img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
+                    document.querySelector(".enkeltBold img").alt = bold.gsx$billede.$t;
+                    document.querySelector(".guld").textContent = bold.gsx$guld.$t;
+                    document.querySelector(".sejre").textContent = bold.gsx$sejre.$t;
+                    document.querySelector(".resultat").textContent = bold.gsx$resultat.$t;
+                    document.querySelector(".sølv").textContent = bold.gsx$sølv.$t;
+                    document.querySelector(".vært").textContent = bold.gsx$vært.$t;
+                    document.querySelector(".topscorer").textContent = bold.gsx$topscorer.$t;
+                    document.querySelector(".info").textContent = bold.gsx$info.$t;
+
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>
