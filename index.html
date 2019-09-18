@@ -218,21 +218,21 @@
         const dest = document.querySelector("#liste");
         const temp = document.querySelector("template");
         document.addEventListener("DOMContentLoaded", getJson);
-
-        async function getJson() { //henter data fra spreadsheet og kører funktion der viser indhold
+        //henter data fra spreadsheet og kører funktion der viser indhold
+        async function getJson() {
             let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1wU2XaFDYe2QRLvGru5Q2j3FHmwMZsp23IKTEOcGe5EQ/od6/public/values?alt=json");
             bold = await jsonData.json();
             visBold();
             addEventListenersToButtons();
 
         }
-
-        function visBold() { //funktion til at vise indhold
+        //funktion til at vise indhold
+        function visBold() {
             dest.innerHTML = "";
             bold.feed.entry.forEach((bold) => {
-
-                    if (filterBold == "alle" || filterBold == bold.gsx$id.$t) //bruges til enten at vise alt indhold eller det filtrerede indhold
-                        const klon = temp.cloneNode(true).content;
+                //bruges til enten at vise alt indhold eller det filtrerede indhold
+                if (filterBold == "alle" || filterBold == bold.gsx$id.$t) {
+                    const klon = temp.cloneNode(true).content;
                     klon.querySelector("h2").textContent = bold.gsx$årstal.$t;
                     klon.querySelector("img").src = 'billeder/' + bold.gsx$billede.$t + '.jpg';
                     klon.querySelector("img").alt = bold.gsx$årstal.$t;
@@ -247,14 +247,14 @@
                 }
             })
         }
-
-        function addEventListenersToButtons() { //kører filtrering funktionen når der bliver klikket på filter klassen
+        //kører filtrering funktionen når der bliver klikket på filter klassen
+        function addEventListenersToButtons() {
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             })
         }
-
-        function filtrering() { //sætter variablen filterBold til at være lig med datasættet, og tilføjer og fjerner .valgt klassen fra knappen
+        //sætter variablen filterBold til at være lig med datasættet, og tilføjer og fjerner .valgt klassen fra knappen
+        function filtrering() {
             filterBold = this.dataset.kategori;
 
             document.querySelectorAll(".filter").forEach(elm => {
