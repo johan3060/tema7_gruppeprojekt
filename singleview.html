@@ -14,6 +14,22 @@
                 font-family: 'Muli', sans-serif;
             }
 
+            header {
+                display: flex;
+                justify-content: space-between;
+            }
+
+
+            .logo {
+                text-align: right;
+                flex-basis: 600px;
+            }
+
+            header img {
+                width: 25%;
+            }
+
+
             h2 {
                 font-weight: bold;
             }
@@ -27,8 +43,8 @@
             }
 
             .luk {
-                font-size: 2rem;
                 cursor: pointer;
+                width: 5%;
             }
 
             img {
@@ -47,10 +63,11 @@
             button {
                 border-radius: 10%;
                 border: solid 1px;
+                background-color: white;
             }
 
-            button:hover {
-                background-color: #e6e6e6;
+            button img {
+                width: 100%;
             }
 
             footer {
@@ -70,8 +87,14 @@
 </head>
 
 <body>
+    <header>
+        <button class="luk"><img src="billeder/pil.png" alt="pil"></button>
+        <div class="logo">
+            <a href="index.html"><img src="billeder/logo.svg" alt="logo"></a>
+        </div>
+
+    </header>
     <main id="single">
-        <button class="luk">Tilbage</button>
         <section class="indhold">
             <article class="enkeltBold">
                 <h2></h2>
