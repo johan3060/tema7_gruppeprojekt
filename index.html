@@ -2,6 +2,23 @@
 <html lang="da">
 
 <head>
+    <link rel="apple-touch-icon" sizes="57x57" href="/billeder/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/billeder/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/billeder/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/billeder/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/billeder/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/billeder/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/billeder/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/billeder/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/billeder/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/billeder/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/billeder/favicon-16x16.png">
+    <link rel="manifest" href="/billeder/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/billeder/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +30,9 @@
 
         header {
             display: flex;
-            justify-content: flex-end;
-
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
         header img {
@@ -23,12 +41,12 @@
 
         .logo {
             text-align: right;
-            flex-basis: 600px;
+
 
         }
 
         .overskrift {
-            text-align: right;
+            text-align: left;
 
         }
 
@@ -43,6 +61,8 @@
         .menu {
             text-align: center;
             margin-bottom: 20px;
+            background-color: green;
+            padding: 5px;
         }
 
         .valgt {
@@ -81,7 +101,15 @@
             background-color: #e6e6e6;
         }
 
-
+        #splash {
+            width: 100vw;
+            height: 100vh;
+            background-image: url(billeder/splash.jpg);
+            background-size: cover;
+            background-position: 30% 0%;
+            max-width: none;
+            margin-bottom: 10px;
+        }
 
 
         img {
@@ -102,15 +130,24 @@
             }
         }
 
-        #splash {
-            width: 100vw;
-            height: 100vh;
-            background-image: url(billeder/splash.jpg);
-            background-size: cover;
-            background-position: 30% 0%;
-            max-width: none;
-            margin-bottom: 10px;
+        @media screen and (max-width: 500px) {
+
+
+            header img {
+                width: 50%;
+            }
+
+            #splash {
+                width: 100%;
+                background-position: bottom;
+            }
+
+            #info {
+                flex-direction: column;
+            }
         }
+
+
 
         footer {
             background-color: green;
@@ -159,15 +196,15 @@
     <footer>
         <div id="info">
             <div class="alex">
-                <p>Alexander</p>
+                <p>Alexander Craner</p>
                 <p>alex5580@stud.kea.dk</p>
             </div>
             <div class="johan">
-                <p>Johan</p>
+                <p>Johan Høyen Nielsen</p>
                 <p>joha2299@stud.kea.dk</p>
             </div>
             <div class="mathias">
-                <p>Mathias</p>
+                <p>Mathias Risborg Høyer</p>
                 <p>math07j8@stud.kea.dk</p>
             </div>
 
