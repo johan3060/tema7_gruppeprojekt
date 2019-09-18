@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
@@ -10,6 +10,28 @@
         html {
             font-family: 'Muli', sans-serif;
         }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+        header img {
+            width: 25%;
+        }
+
+        .logo {
+            text-align: right;
+
+        }
+
+        .overskrift {
+            text-align: left;
+
+        }
+
+
 
         h1 {
             text-align: center;
@@ -88,11 +110,33 @@
             max-width: none;
             margin-bottom: 10px;
         }
+
+        footer {
+            background-color: green;
+
+        }
+
+        #info {
+            margin: 5px;
+            padding: 5px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
     </style>
 </head>
 
 <body>
-    <h1>VM historie</h1>
+    <header>
+        <div class="overskrift">
+            <h1>VM historie</h1>
+        </div>
+        <div class="logo">
+            <a href="index.html"><img src="billeder/logo.svg" alt="logo"></a>
+        </div>
+
+    </header>
     <section id="splash"></section>
 
     <nav class="menu">
@@ -113,7 +157,22 @@
     </template>
 
     <footer>
+        <div id="info">
+            <div class="alex">
+                <p>Alexander</p>
+                <p>alex5580@stud.kea.dk</p>
+            </div>
+            <div class="johan">
+                <p>Johan</p>
+                <p>joha2299@stud.kea.dk</p>
+            </div>
+            <div class="mathias">
+                <p>Mathias</p>
+                <p>math07j8@stud.kea.dk</p>
+            </div>
 
+
+        </div>
     </footer>
 
     <script>
@@ -168,6 +227,7 @@
             this.classList.add("valgt");
             visBold();
         }
+
     </script>
 </body>
 
